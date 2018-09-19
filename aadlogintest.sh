@@ -73,9 +73,9 @@ vms[15]='AADDebian9;credativ:Debian:9:9.0.201808270;16'
 # Let's get the variables from the fake multidimensional array
 for i in "${vms[@]}"
 do
-        arr=(${i//;/ })
-        vmName=${arr[0]}		#VM Name
-        vmImage=${arr[1]}		#VM Image
+	arr=(${i//;/ })
+	vmName=${arr[0]}		#VM Name
+	vmImage=${arr[1]}		#VM Image
 	c=${arr[2]}			#Entry Counter
 
 # Create the VMs
