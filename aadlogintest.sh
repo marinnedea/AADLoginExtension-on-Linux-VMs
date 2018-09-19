@@ -76,7 +76,7 @@ do
         arr=(${i//;/ })
         vmName=${arr[0]}		#VM Name
         vmImage=${arr[1]}		#VM Image
-		c=${arr[2]}				#Entry Counter
+	c=${arr[2]}			#Entry Counter
 
 # Create the VMs
 # NOTE: I'm limited to 100vCPUs/region, so I decided to have the VMs 
