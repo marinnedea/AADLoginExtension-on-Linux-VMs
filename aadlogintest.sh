@@ -43,32 +43,32 @@ adminusername="azureuser"
 username=$(az account show --query user.name --output tsv)
 
 # Simulate a multidimensional array for the VMs we need to create, 
-# each subarray containing the VM name, Linux Image URN, and a counter
+# each subarray containing the VM name and Linux Image URN
 declare -a vms
 
 #Ubuntu (latest image for each version)
-vms[0]='AADU1404;Canonical:UbuntuServer:14.04.5-LTS:14.04.201809130;1'
-vms[1]='AADU1604;UbuntuLTS;2'
-vms[2]='AADU11710;Canonical:UbuntuServer:17.10:17.10.201807060;3'
-vms[3]='AADU1804;Canonical:UbuntuServer:18.04-LTS:18.04.201809110;4'
+vms[0]='AADU1404;Canonical:UbuntuServer:14.04.5-LTS:14.04.201809130'
+vms[1]='AADU1604;UbuntuLTS'
+vms[2]='AADU11710;Canonical:UbuntuServer:17.10:17.10.201807060'
+vms[3]='AADU1804;Canonical:UbuntuServer:18.04-LTS:18.04.201809110'
 
 #CentOS (latest image for each version)
-vms[4]='AADCentOS69;OpenLogic:CentOS:6.9:6.9.20180530;5'
-vms[5]='AADCentOS74;OpenLogic:CentOS:7.4:7.4.20180704;6'
+vms[4]='AADCentOS69;OpenLogic:CentOS:6.9:6.9.20180530'
+vms[5]='AADCentOS74;OpenLogic:CentOS:7.4:7.4.20180704'
 
 # RHEL (latest image for each version)
-vms[6]='AADRHEL67;RedHat:RHEL:6.7:6.7.2017090815;7'
-vms[7]='AADRHEL68;RedHat:RHEL:6.8:6.8.2017090906;8'
-vms[8]='AADRHEL69;RedHat:RHEL:6.9:6.9.2018010506;9'
-vms[9]='AADRHEL610;RedHat:RHEL:6.10:6.10.2018071006;10'
-vms[10]='AADRHEL72;RedHat:RHEL:7.2:7.2.2017090716;11'
-vms[11]='AADRHEL73;RedHat:RHEL:7.3:latest;12'
-vms[12]='AADRHEL74;RedHat:RHEL:7.4:7.4.2018010506;13'
-vms[13]='AADRHEL75;RedHat:RHEL:7-RAW:7.5.2018081518;14'
-vms[14]='AADRHEL76Beta;RedHat:RHEL:7.6-BETA:7.6.2018091307;15'
+vms[6]='AADRHEL67;RedHat:RHEL:6.7:6.7.2017090815'
+vms[7]='AADRHEL68;RedHat:RHEL:6.8:6.8.2017090906'
+vms[8]='AADRHEL69;RedHat:RHEL:6.9:6.9.2018010506'
+vms[9]='AADRHEL610;RedHat:RHEL:6.10:6.10.2018071006'
+vms[10]='AADRHEL72;RedHat:RHEL:7.2:7.2.2017090716'
+vms[11]='AADRHEL73;RedHat:RHEL:7.3:latest'
+vms[12]='AADRHEL74;RedHat:RHEL:7.4:7.4.2018010506'
+vms[13]='AADRHEL75;RedHat:RHEL:7-RAW:7.5.2018081518'
+vms[14]='AADRHEL76Beta;RedHat:RHEL:7.6-BETA:7.6.2018091307'
 
 # Debian (latest image for each version)
-vms[15]='AADDebian9;credativ:Debian:9:9.0.201808270;16'
+vms[15]='AADDebian9;credativ:Debian:9:9.0.201808270'
 
 # Let's get the variables from the fake multidimensional array
 for i in "${vms[@]}"
@@ -76,7 +76,6 @@ do
 	arr=(${i//;/ })
 	vmName=${arr[0]}		#VM Name
 	vmImage=${arr[1]}		#VM Image
-	c=${arr[2]}			#Entry Counter
 
 # Create the VMs
 # NOTE: I'm limited to 100vCPUs/region, so I decided to have the VMs 
